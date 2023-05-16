@@ -1,8 +1,6 @@
 import React from "react";
-import CountriesRecords from "../assets/data/data.json";
 
-const CountryCard = () => {
-  const country = CountriesRecords[4];
+const CountryCard = ({ country }) => {
   return (
     <div className="bg-white shadow-lg rounded-md">
       <img

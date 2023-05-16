@@ -1,4 +1,4 @@
-import CountryCard from "./components/CountryCard";
+import CountryList from "./components/CountryList";
 import FilterByRegion from "./components/FilterByRegion";
 import Header from "./components/Header";
 import SearchBar from "./components/SearchBar";
@@ -12,7 +12,7 @@ function App() {
         <SearchBar />
         <FilterByRegion />
         <div className="px-10">
-          <CountryCard />
+          <CountryList />
         </div>
       </div>
     </div>
