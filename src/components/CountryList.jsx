@@ -4,7 +4,7 @@ import CountryCard from "./CountryCard";
 
 const CountryList = ({ search, selectedRegion }) => {
   const filteredCountries = CountriesRecords.filter((country) => {
-    const countryName = country.name.toLowerCase();
+    const countryName = country.name.common.toLowerCase();
     const searchTerm = search.toLowerCase();
     const regionFilter =
       selectedRegion === "Filter by Region" ||
