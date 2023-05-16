@@ -10,7 +10,7 @@ const links = [
   { label: "Oceania" },
 ];
 
-function FilterDropDown() {
+function FilterByRegion() {
   return (
     <div className="font-semibold text-sm ">
       <Menu>
@@ -45,4 +45,4 @@ function FilterDropDown() {
   );
 }
 
-export default FilterDropDown;
+export default FilterByRegion;

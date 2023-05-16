@@ -1,4 +1,5 @@
-import FilterDropDown from "./components/FilterDropDown";
+import CountryCard from "./components/CountryCard";
+import FilterByRegion from "./components/FilterByRegion";
 import Header from "./components/Header";
 import SearchBar from "./components/SearchBar";
 
@@ -7,11 +8,12 @@ function App() {
     // <div classname="very-light-gray-light">
     <div className="bg-red-500">
       <Header />
-      <div className="px-4 py-5">
+      <div className="flex flex-col gap-10 px-4 py-5">
         <SearchBar />
-      </div>
-      <div className="px-4 py-5">
-        <FilterDropDown />
+        <FilterByRegion />
+        <div className="px-10">
+          <CountryCard />
+        </div>
       </div>
     </div>
   );
