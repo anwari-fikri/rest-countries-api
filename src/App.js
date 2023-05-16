@@ -6,7 +6,8 @@ import SearchBar from "./components/SearchBar";
 
 function App() {
   const [search, setSearch] = React.useState("");
-  console.log(search);
+  const [selectedRegion, setSelectedRegion] =
+    React.useState("Filter by Region");
 
   return (
     // <div classname="very-light-gray-light">
@@ -14,9 +15,12 @@ function App() {
       <Header />
       <div className="flex flex-col gap-10 px-4 py-5">
         <SearchBar setSearch={setSearch} />
-        <FilterByRegion />
+        <FilterByRegion
+          selectedRegion={selectedRegion}
+          setSelectedRegion={setSelectedRegion}
+        />
         <div className="px-10">
-          <CountryList search={search} />
+          <CountryList search={search} selectedRegion={selectedRegion} />
         </div>
       </div>
     </div>

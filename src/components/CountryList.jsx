@@ -2,11 +2,15 @@ import React from "react";
 import CountriesRecords from "../assets/data/data.json";
 import CountryCard from "./CountryCard";
 
-const CountryList = ({ search }) => {
+const CountryList = ({ search, selectedRegion }) => {
   const filteredCountries = CountriesRecords.filter((country) => {
     const countryName = country.name.toLowerCase();
     const searchTerm = search.toLowerCase();
-    return countryName.includes(searchTerm);
+    const regionFilter =
+      selectedRegion === "Filter by Region" ||
+      selectedRegion === country.region;
+
+    return countryName.includes(searchTerm) && regionFilter;
   });
 
   return (
