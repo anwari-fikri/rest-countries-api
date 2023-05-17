@@ -1,70 +1,107 @@
-# Getting Started with Create React App
+# Frontend Mentor - REST Countries API with color theme switcher solution
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a solution to the [REST Countries API with color theme switcher challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-## Available Scripts
+## Table of contents
 
-In the project directory, you can run:
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
 
-### `npm start`
+## Overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### The challenge
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Users should be able to:
 
-### `npm test`
+- See all countries from the API on the homepage
+- Search for a country using an `input` field
+- Filter countries by region
+- Click on a country to see more detailed information on a separate page
+- Click through to the border countries on the detail page
+- Toggle the color scheme between light and dark mode _(optional)_
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Links
 
-### `npm run build`
+- Solution URL: [Add solution URL here](https://github.com/anwari-fikri/rest-countries-api)
+- Live Site URL: [Add live site URL here](https://master--dynamic-haupia-999d58.netlify.app/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## My process
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Built with
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Flexbox
+- Mobile-first workflow
+- React
+- Tailwind
+- Netlify for Deployment
 
-### `npm run eject`
+### What I learned
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 1. Routing with React
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+I never worked on routing on React before, but I did with NextJS, and I realized that [id] routing is a feature from NextJS, not from React. With React, I need to use react-router-dom.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 2. Adding dark theme
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Working with dark themes in Tailwind is easy. To implement it, add the `className="dark:bg-black-500"` attribute to your components. Use the useState hook in React to manage the current theme, and the useEffect hook to apply the correct CSS class to the documentElement based on the selected theme.
 
-## Learn More
+```
+const [theme, setTheme] = React.useState("light");
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+  React.useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  });
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  const handleThemeSwitch = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
 
-### Code Splitting
+  <button onClick={handleThemeSwitch} className="dark:bg-black-500">Switch Theme</button>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+This will make the button turns black in dark mode, white in light mode.
 
-### Making a Progressive Web App
+## 3. Data extraction from nested json
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Extracting data from a json file can be difficult sometimes especially when it has a lot of nested structure with different key. For example a country may have a different native name:
 
-### Advanced Configuration
+```
+Belize has 3 native names for their country
+"nativeName": {
+    "bjz": { "official": "Belize", "common": "Belize" },
+    "eng": { "official": "Belize", "common": "Belize" },
+    "spa": { "official": "Belice", "common": "Belice" }
+  }
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+All I want is the "common" native name but the json having different key makes it difficult to extract the common native name. With the help of ChatGPT, I managed to get the information that I want to extract.
 
-### Deployment
+```
+{Object.values(country.name.nativeName)
+  .map((lang) => lang.common)
+  .join(", ")}
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+this returns: Belize, Belize, Belice
+```
 
-### `npm run build` fails to minify
+### Useful resources
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [Youtube: How To Create Dynamic Pages in React](https://www.youtube.com/watch?v=t-2X1fiS61U&t=780s) - This helped me create routes that allows me to navigate around the site. This is also the reason why I deployed my app on netlify instead of GitHub pages because react-router does not work with GitHub pages.
+- [Youtube: Tailwind CSS Dark Mode | React App Theme Switcher](https://www.youtube.com/watch?v=VylXkPy-MIc) - This video helped me to make my app have theme toggle. Very surprised to know how easy it is to set up dark mode with Tailwind.
+
+## Author
+
+- Website - [Anwari Fikri](https://www.anwarifikri.com/)
+- Frontend Mentor - [@anwari-fikri](https://www.frontendmentor.io/profile/anwari-fikri)

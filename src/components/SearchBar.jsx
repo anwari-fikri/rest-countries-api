@@ -4,7 +4,6 @@ import { FaSearch } from "react-icons/fa";
 const SearchBar = ({ search, setSearch }) => {
   const handleInputChange = (event) => {
     setSearch(event.target.value);
-    console.log(search);
   };
 
   return (

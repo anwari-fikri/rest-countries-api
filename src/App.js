@@ -18,7 +18,6 @@ function App() {
 
   const handleThemeSwitch = () => {
     setTheme(theme === "dark" ? "light" : "dark");
-    console.log(theme);
   };
 
   return (
