@@ -22,10 +22,9 @@ const CountryPage = () => {
         console.log("Error fetching country:", error);
       });
   }, [countryId]);
-  const buttonLabels = ["France", "Germany", "Netherlands", "BRO"];
 
   return (
-    <div classname="very-light-gray-light">
+    <div className="very-light-gray-light">
       {/* <div className="bg-red-500"> */}
       <Header />
       <div className="flex flex-col px-4 py-10">
@@ -41,7 +40,7 @@ const CountryPage = () => {
 
         <div className="space-y-7 py-10 font-semibold text-sm">
           <div>
-            {country ? (
+            {country && (
               <div className="shadow-lg">
                 <img
                   className="w-full rounded-t-md"
@@ -49,27 +48,22 @@ const CountryPage = () => {
                   alt="Country Flag"
                 />
               </div>
-            ) : (
-              ""
             )}
           </div>
           <div>
-            {country ? (
+            {country && (
               <h1 className="font-bold text-xl">{country.name.common}</h1>
-            ) : (
-              ""
             )}
           </div>
           <div>
-            {country ? (
+            {country && (
               <div className="space-y-2">
                 <h3>
                   Native Name:{" "}
                   <span className="font-thin">
-                    {country &&
-                      Object.values(country.name.nativeName)
-                        .map((lang) => lang.common)
-                        .join(", ")}
+                    {Object.values(country.name.nativeName)
+                      .map((lang) => lang.common)
+                      .join(", ")}
                   </span>
                 </h3>
                 <h3>
@@ -92,12 +86,10 @@ const CountryPage = () => {
                   </span>
                 </h3>
               </div>
-            ) : (
-              ""
             )}
           </div>
           <div>
-            {country ? (
+            {country && (
               <div className="space-y-2">
                 <h3>
                   Top Level Domain:{" "}
@@ -118,29 +110,24 @@ const CountryPage = () => {
                   </span>
                 </h3>
               </div>
-            ) : (
-              ""
             )}
           </div>
           <div className="space-y-2">
-            {country ? (
-              <>
-                <h2 className="text-lg">Border Countries:</h2>
-                <div class="grid-cols-3 grid gap-3">
-                  {/* Iterate over the buttonLabels array using map */}
-                  {buttonLabels.map((label, index) => (
-                    <div
-                      key={index}
-                      className="bg-white shadow-lg border border-dark-gray-light/20 text-center basis-1/3"
-                    >
-                      <button className="w-full p-2">{label}</button>
-                    </div>
-                  ))}
-                </div>
-              </>
-            ) : (
-              ""
-            )}
+            <h2 className="text-lg">Border Countries:</h2>
+            <div class="grid-cols-3 grid gap-3">
+              {country?.borders?.length > 0 ? (
+                country.borders.map((border, index) => (
+                  <div
+                    key={index}
+                    className="bg-white shadow-lg border border-dark-gray-light/20 text-center basis-1/3"
+                  >
+                    <button className="w-full p-2">{border}</button>
+                  </div>
+                ))
+              ) : (
+                <p className="font-thin">No Border Countries</p>
+              )}
+            </div>
           </div>
         </div>
       </div>
