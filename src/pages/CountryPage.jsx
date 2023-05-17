@@ -29,10 +29,10 @@ const CountryPage = () => {
   }
 
   return (
-    <div className="very-light-gray-light">
+    <div className="h-full very-light-gray-light dark:bg-very-dark-blue-dark dark:text-white">
       {/* <div className="bg-red-500"> */}
       <div className="flex flex-col px-4 py-10">
-        <div className="w-fit shadow-lg bg-white">
+        <div className="w-fit shadow-lg border border-dark-gray-light/20  bg-white dark:bg-dark-blue-dark dark:text-white">
           <button
             className="flex items-center gap-5 text-sm px-7 py-2"
             onClick={handleClick}
@@ -124,7 +124,7 @@ const CountryPage = () => {
                   <Link to={`/country/${getCountryNameByCode(border)}`}>
                     <div
                       key={index}
-                      className="bg-white shadow-lg border border-dark-gray-light/20 text-center basis-1/3"
+                      className="bg-white shadow-lg border border-dark-gray-light/20 text-center basis-1/3 dark:bg-dark-blue-dark dark:text-white"
                     >
                       <p className="w-full p-2">
                         {getCountryNameByCode(border)}
@@ -133,7 +133,7 @@ const CountryPage = () => {
                   </Link>
                 ))
               ) : (
-                <p className="font-thin">No Border Countries</p>
+                <p className="font-thin col-span-3">No Border Countries</p>
               )}
             </div>
           </div>

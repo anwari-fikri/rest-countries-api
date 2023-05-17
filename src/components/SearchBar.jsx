@@ -1,5 +1,5 @@
 import React from "react";
-import { GrSearch } from "react-icons/gr";
+import { FaSearch } from "react-icons/fa";
 
 const SearchBar = ({ search, setSearch }) => {
   const handleInputChange = (event) => {
@@ -8,10 +8,10 @@ const SearchBar = ({ search, setSearch }) => {
   };
 
   return (
-    <div className="flex items-center gap-4 w-full rounded-md shadow-md p-4 text-sm text-dark-gray-light bg-white">
-      <GrSearch />
+    <div className="flex items-center gap-4 w-full rounded-md shadow-md p-4 text-sm text-dark-gray-light bg-white dark:bg-dark-blue-dark dark:text-white">
+      <FaSearch className="dark:text-white" />
       <input
-        className="w-full h-full focus:outline-none"
+        className="dark:bg-dark-blue-dark dark:text-white w-full h-full focus:outline-none"
         placeholder={"Search for a country..."}
         name="Search"
         onChange={handleInputChange}
