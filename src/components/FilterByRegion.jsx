@@ -23,7 +23,7 @@ function FilterByRegion({ selectedRegion, setSelectedRegion }) {
           <p>{selectedRegion}</p>
           <BsChevronDown />
         </Menu.Button>
-        <Menu.Items className="bg-white my-1 rounded-md shadow-lg absolute left-4 dark:bg-dark-blue-dark dark:text-white">
+        <Menu.Items className="bg-white my-1 rounded-md shadow-lg absolute dark:bg-dark-blue-dark dark:text-white">
           <div className="py-3">
             {links.map((link) => (
               <Menu.Item

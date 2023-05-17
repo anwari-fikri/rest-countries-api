@@ -3,7 +3,7 @@ import { FaRegMoon } from "react-icons/fa";
 
 const Header = ({ handleThemeSwitch }) => {
   return (
-    <div className="flex justify-between items-center py-4 md:px-14 h-20 bg-white dark:bg-dark-blue-dark dark:text-white shadow-md">
+    <div className="flex justify-between items-center px-4 py-4 md:px-14 h-20 bg-white dark:bg-dark-blue-dark dark:text-white shadow-md">
       <h1 className="font-bold">Where in the world?</h1>
       <button onClick={handleThemeSwitch} className="font-semibold">
         <span className="flex items-center gap-2">
