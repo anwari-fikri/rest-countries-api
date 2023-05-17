@@ -6,7 +6,7 @@ const CountryCard = ({ country }) => {
     <div className="bg-white shadow-lg rounded-md dark:bg-dark-blue-dark dark:text-white">
       <Link to={`/country/${country.name.common}`}>
         <img
-          className="w-full rounded-t-md"
+          className="w-full rounded-t-md md:h-56 "
           src={country.flags.png}
           alt="Country Flag"
         />

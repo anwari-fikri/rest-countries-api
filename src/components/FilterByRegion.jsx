@@ -35,7 +35,7 @@ function FilterByRegion({ selectedRegion, setSelectedRegion }) {
                   <p
                     className={`${
                       active
-                        ? "bg-blue-500 text-white cursor-pointer dark:bg-dark-gray-light"
+                        ? "bg-blue-500 text-white cursor-pointer dark:dark"
                         : "bg-white text-black"
                     }`}
                     onClick={() => handleItemClick(link.value)}

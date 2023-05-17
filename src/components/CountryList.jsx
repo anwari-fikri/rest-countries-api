@@ -14,9 +14,11 @@ const CountryList = ({ search, selectedRegion }) => {
   });
 
   return (
-    <div className="flex flex-col gap-10">
+    <div className="grid grid-cols-1 gap-10 md:grid-cols-4">
       {filteredCountries.map((country, index) => (
-        <CountryCard key={index} country={country} />
+        <div>
+          <CountryCard key={index} country={country} />
+        </div>
       ))}
     </div>
   );
