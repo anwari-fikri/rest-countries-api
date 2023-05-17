@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import { BsArrowLeft } from "react-icons/bs";
 
 const CountryPage = () => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/");
+  };
   const { countryId } = useParams();
   const [country, setCountry] = useState(null);
 
@@ -25,7 +30,10 @@ const CountryPage = () => {
       <Header />
       <div className="flex flex-col px-4 py-10">
         <div className="w-fit shadow-lg bg-white">
-          <button className="flex items-center gap-5 text-sm px-7 py-2">
+          <button
+            className="flex items-center gap-5 text-sm px-7 py-2"
+            onClick={handleClick}
+          >
             <BsArrowLeft />
             Back
           </button>
