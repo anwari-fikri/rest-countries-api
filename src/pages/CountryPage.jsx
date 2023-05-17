@@ -29,7 +29,7 @@ const CountryPage = () => {
   }
 
   return (
-    <div className="h-full very-light-gray-light dark:bg-very-dark-blue-dark dark:text-white">
+    <div className="min-h-screen very-light-gray-light dark:bg-very-dark-blue-dark dark:text-white">
       {/* <div className="bg-red-500"> */}
       <div className="flex flex-col px-4 py-10">
         <div className="w-fit shadow-lg border border-dark-gray-light/20  bg-white dark:bg-dark-blue-dark dark:text-white">

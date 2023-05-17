@@ -8,7 +8,7 @@ const HomePage = () => {
   const [selectedRegion, setSelectedRegion] =
     React.useState("Filter by Region");
   return (
-    <div className="very-light-gray-light dark:bg-very-dark-blue-dark">
+    <div className="min-h-screen very-light-gray-light dark:bg-very-dark-blue-dark">
       {/* // <div className="bg-red-500"> */}
       <div className="flex flex-col gap-10 px-4 py-5">
         <SearchBar setSearch={setSearch} />
