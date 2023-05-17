@@ -26,7 +26,6 @@ function FilterByRegion({ selectedRegion, setSelectedRegion }) {
         <Menu.Items className="bg-white my-1 rounded-md shadow-lg absolute left-4">
           <div className="py-3">
             {links.map((link) => (
-              /* Use the `active` state to conditionally style the active item. */
               <Menu.Item
                 key={link.label}
                 as={Fragment}
@@ -35,7 +34,9 @@ function FilterByRegion({ selectedRegion, setSelectedRegion }) {
                 {({ active }) => (
                   <p
                     className={`${
-                      active ? "bg-blue-500 text-white" : "bg-white text-black"
+                      active
+                        ? "bg-blue-500 text-white cursor-pointer"
+                        : "bg-white text-black"
                     }`}
                     onClick={() => handleItemClick(link.value)}
                   >

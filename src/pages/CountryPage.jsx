@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
-import Header from "../components/Header";
 import { BsArrowLeft } from "react-icons/bs";
 import CountriesRecords from "../assets/data/data.json";
 
@@ -32,7 +31,6 @@ const CountryPage = () => {
   return (
     <div className="very-light-gray-light">
       {/* <div className="bg-red-500"> */}
-      <Header />
       <div className="flex flex-col px-4 py-10">
         <div className="w-fit shadow-lg bg-white">
           <button
