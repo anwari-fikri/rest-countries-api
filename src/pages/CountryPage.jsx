@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import { BsArrowLeft } from "react-icons/bs";
+import CountriesRecords from "../assets/data/data.json";
 
 const CountryPage = () => {
   const navigate = useNavigate();
@@ -22,6 +23,11 @@ const CountryPage = () => {
         console.log("Error fetching country:", error);
       });
   }, [countryId]);
+
+  function getCountryNameByCode(cca3) {
+    const country = CountriesRecords.find((c) => c.cca3 === cca3);
+    return country ? country.name.common : "Country not found";
+  }
 
   return (
     <div className="very-light-gray-light">
@@ -117,12 +123,16 @@ const CountryPage = () => {
             <div class="grid-cols-3 grid gap-3">
               {country?.borders?.length > 0 ? (
                 country.borders.map((border, index) => (
-                  <div
-                    key={index}
-                    className="bg-white shadow-lg border border-dark-gray-light/20 text-center basis-1/3"
-                  >
-                    <button className="w-full p-2">{border}</button>
-                  </div>
+                  <Link to={`/country/${getCountryNameByCode(border)}`}>
+                    <div
+                      key={index}
+                      className="bg-white shadow-lg border border-dark-gray-light/20 text-center basis-1/3"
+                    >
+                      <p className="w-full p-2">
+                        {getCountryNameByCode(border)}
+                      </p>
+                    </div>
+                  </Link>
                 ))
               ) : (
                 <p className="font-thin">No Border Countries</p>
