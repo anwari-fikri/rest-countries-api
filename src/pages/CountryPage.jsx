@@ -57,19 +57,31 @@ const CountryPage = () => {
               <div className="space-y-2">
                 <h3>
                   Native Name:{" "}
-                  <span className="font-thin">{country.name.common}</span>
+                  <span className="font-thin">
+                    {country &&
+                      Object.values(country.name.nativeName)
+                        .map((lang) => lang.common)
+                        .join(", ")}
+                  </span>
                 </h3>
                 <h3>
-                  Population: <span>{country.population.toLocaleString()}</span>
+                  Population:{" "}
+                  <span className="font-thin">
+                    {country.population.toLocaleString()}
+                  </span>
                 </h3>
                 <h3>
-                  Region: <span>{country.region}</span>
+                  Region: <span className="font-thin">{country.region}</span>
                 </h3>
                 <h3>
-                  Sub Region: <span>{country.subregion}</span>
+                  Sub Region:{" "}
+                  <span className="font-thin">{country.subregion}</span>
                 </h3>
                 <h3>
-                  Capital: <span>{country.capital.join(", ")}</span>
+                  Capital:{" "}
+                  <span className="font-thin">
+                    {country.capital.join(", ")}
+                  </span>
                 </h3>
               </div>
             ) : (
@@ -80,11 +92,12 @@ const CountryPage = () => {
             {country ? (
               <div className="space-y-2">
                 <h3>
-                  Top Level Domain: <span>{country.tld.join(", ")}</span>
+                  Top Level Domain:{" "}
+                  <span className="font-thin">{country.tld.join(", ")}</span>
                 </h3>
                 <h3>
                   Currencies:{" "}
-                  <span>
+                  <span className="font-thin">
                     {Object.values(country.currencies)
                       .map((currency) => currency.name)
                       .join(", ")}
@@ -92,7 +105,9 @@ const CountryPage = () => {
                 </h3>
                 <h3>
                   Languages:{" "}
-                  <span>{Object.values(country.languages).join(", ")}</span>
+                  <span className="font-thin">
+                    {Object.values(country.languages).join(", ")}
+                  </span>
                 </h3>
               </div>
             ) : (
