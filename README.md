@@ -28,8 +28,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://github.com/anwari-fikri/rest-countries-api)
-- Live Site URL: [Add live site URL here](https://dynamic-haupia-999d58.netlify.app/)
+- Solution URL: https://github.com/anwari-fikri/rest-countries-api
+- Live Site URL: https://dynamic-haupia-999d58.netlify.app/
 
 ## My process
 
